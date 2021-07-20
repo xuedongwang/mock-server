@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>APIS</title>
+</head>
+<body>
+  <h1>APIS</h1>
+  <table border="1" width="100%" style="border-collapse:collapse;">
+    <thead>
+      <tr>
+        <th>接口名</th>
+        <th width="100">请求方法</th>
+        <th>接口地址</th>
+        <th width="100">延迟时间(ms)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% apis.forEach(function(api){ %>
+          <tr>
+            <td>
+              <%= api.name || api.path %>
+            </td>
+            <td>
+              <%= api.method %>
+            </td>
+            <td>
+              <button class="copy-btn" data-clipboard-text="<%= api.path %>">复制</button>
+              <a title="<%= api.path %>" href="<%= api.path %>"><%= api.path %></a>、
+            </td>
+            <td>
+              <%= api.timeout || 0 %>
+            </td>
+          </tr>
+      <% }); %>
+    </tbody>
+  </table>
+  <script src="/js/jquery-3.6.0.js"></script>
+  <script src="/js/clipboard-2.0.8.js"></script>
+  <script>
+    $(function() {
+      $('.copy-btn').click(function(e) {
+        const clipboard = new ClipboardJS('.copy-btn');
+        clipboard.on('success', function(e) {
+            // e.clearSelection();
+            clipboard.destroy();
+        });
+
+        clipboard.on('error', function(e) {
+            console.error(`${e.action} 失败`);
+        });
+      })
+    })
+  </script>
+</body>
+</html>

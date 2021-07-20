@@ -1,0 +1,10 @@
+{
+  "restartable": "rs",
+  "verbose": true,
+  "watch": [
+    "mock/"
+  ],
+  "ignore": [],
+  "exec": "node ./app.js",
+  "ext": "js html"
+}
