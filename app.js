@@ -6,7 +6,7 @@ const cors = require('@koa/cors');
 const chalk = require('chalk');
 const views = require('koa-views');
 
-const routes = require('./routes');
+const { apiStatistics, apis } = require('./routes');
 
 const app = new Koa();
 const router = new Router();
@@ -22,13 +22,14 @@ app.use(render);
 
 router.get('/', async ctx => {
   await ctx.render('index', {
-    apis: routes
+    apiStatistics
   })
 })
 
-routes.forEach(route => {
+apis.forEach(route => {
   const { method, path, timeout, data } = route;
-  router[method](path, async ctx => {
+  // 为了能方便的在浏览器端访问，全部使用get方法
+  router['get'](path, async ctx => {
     if (timeout) {
       await delay(timeout);
     }

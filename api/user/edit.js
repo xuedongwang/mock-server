@@ -3,8 +3,9 @@ const faker = require('faker');
 
 module.exports = {
   name: '编辑用户信息',
-  method: 'get',
+  method: 'post',
   timeout: 1000,
+  category: 'user',
   data: {
     code: 0,
     message: 'success',

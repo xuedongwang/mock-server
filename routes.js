@@ -17,8 +17,32 @@ result = files.map(file => {
   path = path.replace(/\.js$/, '');
   return {
     ...require(file),
+    category: require(file).category || '未分类',
     path
   } || {}
 })
 
-module.exports = result
+const ret = [];
+const m = new Map();
+result.forEach(api => {
+  if (m.has(api.category)) {
+    const targetIndex = ret.findIndex(item => item.category === api.category);
+    ret[targetIndex].count = ret[targetIndex].count + 1;
+    ret[targetIndex].children.push(api);
+  } else {
+    m.set(api.category, true);
+    ret.push({
+      category: api.category,
+      count: 1,
+      children: [
+        api
+      ]
+    })
+  }
+})
+
+
+module.exports = {
+  apis: result,
+  apiStatistics: ret
+}

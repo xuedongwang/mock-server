@@ -3,6 +3,7 @@ const faker = require('faker');
 
 module.exports = {
   name: '删除用户',
+  category: 'user',
   method: 'get',
   timeout: 1000,
   data: {

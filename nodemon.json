@@ -2,7 +2,10 @@
   "restartable": "rs",
   "verbose": true,
   "watch": [
-    "mock/"
+    "./"
+  ],
+  "exclude": [
+    "node_modules"
   ],
   "ignore": [],
   "exec": "node ./app.js",

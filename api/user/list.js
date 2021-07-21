@@ -5,6 +5,7 @@ module.exports = {
   name: '用户列表',
   method: 'get',
   timeout: 1000,
+  category: 'user',
   data: {
     code: 0,
     message: 'success',
