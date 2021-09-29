@@ -2,15 +2,17 @@ const faker = require('faker/locale/zh_CN');
 // http://marak.github.io/faker.js/
 
 module.exports = {
-  name: '登录',
+  name: '数据统计',
   method: 'get',
   timeout: 1000,
-  category: 'user',
+  category: 'common',
   data: {
     code: 0,
     message: 'success',
     data: {
-      token: faker.git.commitSha()
+      articleCount: faker.datatype.number(),
+      categoryCount: faker.datatype.number(),
+      commentCount: faker.datatype.number()
     }
   }
 }

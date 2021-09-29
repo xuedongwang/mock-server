@@ -1,4 +1,4 @@
-const faker = require('faker');
+const faker = require('faker/locale/zh_CN');
 // http://marak.github.io/faker.js/
 
 module.exports = {
@@ -9,6 +9,11 @@ module.exports = {
   data: {
     code: 0,
     message: 'success',
-    data: {}
+    data: {
+      name: faker.name.firstName(),
+      avatar: faker.image.avatar(),
+      description: faker.name.jobDescriptor(),
+      address: faker.address.city()
+    }
   }
 }

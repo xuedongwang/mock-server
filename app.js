@@ -27,9 +27,8 @@ router.get('/', async ctx => {
 })
 
 apis.forEach(route => {
-  const { method, path, timeout, data } = route;
-  // 为了能方便的在浏览器端访问，全部使用get方法
-  router['get'](path, async ctx => {
+  const { path, timeout, data } = route;
+  router.all(path, async ctx => {
     if (timeout) {
       await delay(timeout);
     }

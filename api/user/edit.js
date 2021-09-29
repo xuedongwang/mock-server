@@ -1,4 +1,4 @@
-const faker = require('faker');
+const faker = require('faker/locale/zh_CN');
 // http://marak.github.io/faker.js/
 
 module.exports = {
