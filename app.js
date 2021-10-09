@@ -19,7 +19,6 @@ const render = views(__dirname + '/views', {
   }
 })
 app.use(render);
-
 router.get('/', async ctx => {
   await ctx.render('index', {
     apiStatistics
